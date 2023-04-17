@@ -1,4 +1,4 @@
-name: CI
+name: cilium-kind
 
 on:
   pull_request:
@@ -10,12 +10,13 @@ on:
 
 jobs:
   specs:
-    name: specs
+    name: cilium-kind
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: alexellis/setup-arkade@master
-      - uses: alexellis/get-arkade@master
+
+      - uses: alexellis/arkade-get@master
         with:
           kind: latest
           kubectl: latest
