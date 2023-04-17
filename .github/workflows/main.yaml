@@ -11,7 +11,7 @@ on:
 jobs:
   specs:
     name: cilium-kind
-    runs-on: ubuntu-latest
+    runs-on: actuated
     steps:
       - uses: actions/checkout@v1
       - uses: alexellis/setup-arkade@master
