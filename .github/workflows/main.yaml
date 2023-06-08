@@ -36,9 +36,7 @@ jobs:
           sudo tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz /usr/local/bin
           rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
 
-          cilium install
-
-
+#          cilium install
 #          cilium status --wait
 
       - name: Attach SSH
