@@ -40,5 +40,5 @@ jobs:
 #          cilium status --wait
 
       - name: Attach SSH
-        run: self-actuated/connect-ssh@master
+        uses: self-actuated/connect-ssh@master
         
