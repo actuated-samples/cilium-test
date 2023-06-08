@@ -23,8 +23,11 @@ jobs:
         with:
           kind: latest
           kubectl: latest
+          stern: latest
       - name: Check specs
         run: |
+          sudo cp -r $HOME/.arkade/bin/* /usr/local/bin/
+
           curl -LO https://raw.githubusercontent.com/cilium/cilium/1.13.1/Documentation/installation/kind-config.yaml
           kind create cluster --config=kind-config.yaml
 
