@@ -8,6 +8,8 @@ on:
     branches:
       - master
 
+permissions:
+  id_token: write
 
 jobs:
   specs:
@@ -36,4 +38,9 @@ jobs:
 
           cilium install
 
-          cilium status --wait
+
+#          cilium status --wait
+
+      - name: Attach SSH
+        run: self-actuated/connect-ssh@master
+        
