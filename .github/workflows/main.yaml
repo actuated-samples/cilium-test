@@ -39,9 +39,11 @@ jobs:
           sudo tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz /usr/local/bin
           rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
 
-          cilium install &
-#          cilium status --wait
+          cilium install
+          cilium status --wait
+          
+          kubectl get pods -n kube-system
 
-      - name: Attach SSH
-        uses: self-actuated/connect-ssh@master
+#      - name: Attach SSH
+#        uses: self-actuated/connect-ssh@master
         
