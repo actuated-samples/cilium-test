@@ -14,8 +14,8 @@ permissions:
 jobs:
   specs:
     name: cilium-kind
-    runs-on: actuated-arm64-4cpu-8gb
-    # runs-on: actuated-4cpu-8gb
+    # runs-on: actuated-arm64-4cpu-8gb
+    runs-on: actuated-4cpu-8gb
     steps:
       - uses: actions/checkout@v1
 
@@ -38,10 +38,14 @@ jobs:
       - name: Attach SSH
         uses: self-actuated/connect-ssh@master
 
-      - name: Check Cilium
-        run: kubectl get pods -n kube-system
-#          cilium status --wait
-#          kubectl get pods -n kube-system
+      - name: Cilium quick check
+        run: |
+          kubectl get pods -n kube-system
+          kubectl logs  -n kube-system -l "app.kubernetes.io/name=cilium-agent"
+
+      - name: Cilium full check
+        run: |
+         cilium status --wait
 
 
         
