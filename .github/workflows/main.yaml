@@ -14,7 +14,8 @@ permissions:
 jobs:
   specs:
     name: cilium-kind
-    runs-on: actuated-8cpu-16gb
+    runs-on: actuated-arm64-4cpu-8gb
+    # runs-on: actuated-4cpu-8gb
     steps:
       - uses: actions/checkout@v1
 
