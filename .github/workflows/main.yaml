@@ -39,6 +39,7 @@ jobs:
         uses: self-actuated/connect-ssh@master
 
       - name: Check Cilium
+        run: kubectl get pods -n kube-system
 #          cilium status --wait
 #          kubectl get pods -n kube-system
 
