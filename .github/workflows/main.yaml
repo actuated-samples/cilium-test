@@ -25,18 +25,22 @@ jobs:
           kubectl: latest
           stern: latest
           cilium: latest
-      - name: Check specs
+      - name: Setup Kind
         run: |
           sudo cp -r $HOME/.arkade/bin/* /usr/local/bin/
 
           curl -LO https://raw.githubusercontent.com/cilium/cilium/1.13.1/Documentation/installation/kind-config.yaml
           kind create cluster --config=kind-config.yaml
-
+      - name: Setup Cilium
+        run: |
           cilium install
-#          cilium status --wait
-          
-#          kubectl get pods -n kube-system
 
       - name: Attach SSH
         uses: self-actuated/connect-ssh@master
+
+      - name: Check Cilium
+#          cilium status --wait
+#          kubectl get pods -n kube-system
+
+
         
