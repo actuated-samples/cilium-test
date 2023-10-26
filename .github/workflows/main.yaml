@@ -33,10 +33,10 @@ jobs:
           kind create cluster --config=kind-config.yaml
 
           cilium install
-          cilium status --wait
+#          cilium status --wait
           
-          kubectl get pods -n kube-system
+#          kubectl get pods -n kube-system
 
-     - name: Attach SSH
-       uses: self-actuated/connect-ssh@master
+      - name: Attach SSH
+        uses: self-actuated/connect-ssh@master
         
