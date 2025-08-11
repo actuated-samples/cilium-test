@@ -35,9 +35,6 @@ jobs:
         run: |
           cilium install --version 1.18.0
 
-      # - name: Attach SSH
-      #   uses: self-actuated/connect-ssh@master
-
       - name: Cilium quick check
         run: |
           kubectl get pods -n kube-system
@@ -53,4 +50,5 @@ jobs:
          cilium status --wait
 
 
-        
+      - name: Attach SSH
+        uses: self-actuated/connect-ssh@master
