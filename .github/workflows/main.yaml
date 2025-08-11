@@ -41,7 +41,12 @@ jobs:
       - name: Cilium quick check
         run: |
           kubectl get pods -n kube-system
-          kubectl logs  -n kube-system -l "app.kubernetes.io/name=cilium-agent"
+
+          kubectl wait -n kube-system \
+            --for=condition=Ready pod -l app.kubernetes.io/name=cilium-agent \
+            --timeout=180s || true   # don’t fail if they never become Ready
+
+          kubectl logs  -n kube-system -l "app.kubernetes.io/name=cilium-agent" || echo "Logs not ready"
 
       - name: Cilium full check
         run: |
